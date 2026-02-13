@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Face Verification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <!-- Logo Banner -->
+    <div class="top-banner"></div>
+
+    <!-- Main Card -->
+    <div class="container">
+
+        <h1>AI Face Verification</h1>
+
+        <form action="/compare" method="post" enctype="multipart/form-data" class="upload-form">
+
+            <div class="file-input">
+                <label>Upload First Image</label>
+                <input type="file" name="file1" required>
+            </div>
+
+            <div class="file-input">
+                <label>Upload Second Image</label>
+                <input type="file" name="file2" required>
+            </div>
+
+            <button type="submit">Verify Faces</button>
+
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>{{ result }}</h2>
+
+            {% if image1_url and image2_url %}
+            <div class="images">
+                <img src="{{ image1_url }}" alt="Image 1">
+                <img src="{{ image2_url }}" alt="Image 2">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
